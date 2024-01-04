@@ -6,15 +6,10 @@ import * as S from './styles'
 
 type Props = {
   favoritos: ProdutoType[]
-  adicionarAoCarrinho: (produto: ProdutoType) => void
   favoritar: (produto: ProdutoType) => void
 }
 
-const ProdutosComponent = ({
-  favoritos,
-  adicionarAoCarrinho,
-  favoritar
-}: Props) => {
+const ProdutosComponent = ({ favoritos, favoritar }: Props) => {
   const { data: produtos, isLoading } = useGetProdutosQuery()
 
   const produtoEstaNosFavoritos = (produto: ProdutoType) => {
@@ -33,7 +28,6 @@ const ProdutosComponent = ({
             estaNosFavoritos={produtoEstaNosFavoritos(produto)}
             key={produto.id}
             favoritar={favoritar}
-            aoComprar={adicionarAoCarrinho}
           />
         ))}
       </S.Produtos>
